@@ -15,7 +15,7 @@
 # along with Mapotempo. If not, see:
 # <http://www.gnu.org/licenses/agpl.html>
 #
-require_relative '../../../api/v01/entities/destination_id'
+require_relative '../../../../app/api/v01/entities/destination_id'
 
 V01::Destinations.class_eval do
   desc 'Fetch customer\'s destinations inside time/distance.',
