@@ -17,10 +17,12 @@
 #
 require 'ostruct'
 
-ApiWeb::V01::StoresController.class_eval do
-  def by_distance
-    @customer = current_user.customer
-    @position = OpenStruct.new(lat: Float(params[:lat]), lng: Float(params[:lng]))
-    @stores = @customer.stores_by_distance(@position, Integer(params[:n]))
+Rails.application.config.to_prepare do
+  ApiWeb::V01::StoresController.class_eval do
+    def by_distance
+      @customer = current_user.customer
+      @position = OpenStruct.new(lat: Float(params[:lat]), lng: Float(params[:lng]))
+      @stores = @customer.stores_by_distance(@position, Integer(params[:n]))
+    end
   end
 end
